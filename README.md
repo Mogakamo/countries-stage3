@@ -9,10 +9,13 @@ This is an app that is built for submission of my HNG task stage 3. It fetches c
 
 ## ⚙️ Requirements
 nodejs
+expo
 
 
 ## 🎮 Usage
-npm run android
+git clone https://github.com/Mogakamo/countries-stage3
+npm i
+npm run start
 
 
 
