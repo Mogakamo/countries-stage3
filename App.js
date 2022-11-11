@@ -1,11 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, SafeAreaView } from "react-native";
+import {NavigationContainer} from "@react-navigation/native"
+import MainStackNavigator from "./src/navigation/MainStackNavigator";
 
 export default function App() {
   return (
-    <SafeAreaView>
-      <Text>Hello</Text>
+    <NavigationContainer>
       <StatusBar style="auto" />
-    </SafeAreaView>
+      <MainStackNavigator />
+    </NavigationContainer>
   );
 }
