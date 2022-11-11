@@ -1,19 +1,23 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import CountriesScreen from '../screens/CountriesScreen'
-import CountryDetailsScreen from '../screens/CountryDetailsScreen'
+import { View, Text } from "react-native";
+import React from "react";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-const Stack = createNativeStackNavigator()
+// Screens
+import CountriesScreen from "../screens/CountriesScreen";
+import CountryDetailsScreen from "../screens/CountryDetailsScreen";
+import Header from "../components/Header";
+
+const Stack = createNativeStackNavigator();
 
 const MainStackNavigator = () => {
-
   return (
     <Stack.Navigator>
-      <Stack.Screen name='Home' component={CountriesScreen} />
-      <Stack.Screen name='Details' component={CountryDetailsScreen} />
+      <Stack.Screen name="Home" component={CountriesScreen} options={{
+        headerTitle: (props) => <Header />
+      }} />
+      <Stack.Screen name="CountryDetails" component={CountryDetailsScreen} />
     </Stack.Navigator>
-  )
-}
+  );
+};
 
-export default MainStackNavigator
+export default MainStackNavigator;
