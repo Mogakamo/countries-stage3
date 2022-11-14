@@ -98,7 +98,7 @@ export const countriesApi = createApi({
 
 export const countriesApiCodes = createApi({
   reducerPath: "countriesCodesApi",
-  keepUnusedDataFor: 999_999,
+  keepUnusedDataFor: 999,
   baseQuery: fetchBaseQuery({ baseUrl: "https://restcountries.com/v2/all" }),
   endpoints: (builder) => ({
     getAllCodes: builder.query({
