@@ -6,6 +6,13 @@
 ## 📄 Description
 This is an app that is built for submission of my HNG task stage 3. It fetches coutries from the countries REST API and gets to display its information.
 
+- Features
+* Filter countries by region 
+* View country details
+
+Appetize Link: https://appetize.io/app/xtj4ftc5m6bxws6ccrkdrdvvam?device=pixel4&osVersion=11.0&scale=75
+
+
 
 ## ⚙️ Requirements
 nodejs
