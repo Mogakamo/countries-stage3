@@ -1,5 +1,5 @@
-import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react"
-import {isEmpty, sortBy} from "lodash"
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { isEmpty, sortBy } from "lodash";
 
 const transformedResponse = (response) => {
   const countries = [];
@@ -16,7 +16,7 @@ const transformedResponse = (response) => {
       languages,
       flags,
       timezones,
-      car
+      car,
     }) => {
       countries.push({
         id: ccn3,
@@ -31,31 +31,35 @@ const transformedResponse = (response) => {
         languages: languages && Object.values(languages),
         flag: flags?.png,
         timezones,
-        car: car?.side
+        car: car?.side,
       });
     }
   );
 
-  return countries
+  return countries;
 };
 
 export const countriesApi = createApi({
-     reducerPath: 'countriesApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'https://restcountries.com/v3.1/' }),
-  tagTypes: ['Countries'],
+  reducerPath: "countriesApi",
+  baseQuery: fetchBaseQuery({ baseUrl: "https://restcountries.com/v3.1/" }),
+  tagTypes: ["Countries"],
   endpoints: (builder) => ({
     getAllCountries: builder.query({
       providesTags: (result, error, arg) =>
         result
-          ? [...result.map(({ id }) => ({ type: 'Countries', id })), 'Countries']
-          : ['Countries'],
+          ? [
+              ...result.map(({ id }) => ({ type: "Countries", id })),
+              "Countries",
+            ]
+          : ["Countries"],
       async queryFn(_arg, _queryApi, _extraOptions, fetchWithBQ) {
-        const { capital, debouncedSearchTerm, population, language, region } = _arg;
+        const { capital, debouncedSearchTerm, population, language, region } =
+          _arg;
 
-        const allCountries = await fetchWithBQ('all/');
+        const allCountries = await fetchWithBQ("all/");
         if (allCountries.error) throw allCountries.error;
 
-        let data = sortBy(transformedResponse(allCountries.data), ['name']);
+        let data = sortBy(transformedResponse(allCountries.data), ["name"]);
 
         if (!isEmpty(capital)) {
           data = data.filter(({ capital: cap }) =>
@@ -69,7 +73,8 @@ export const countriesApi = createApi({
 
         if (language) {
           data = data.filter(
-            ({ languages }) => !isEmpty(languages) && languages.includes(language)
+            ({ languages }) =>
+              !isEmpty(languages) && languages.includes(language)
           );
         }
 
@@ -83,24 +88,26 @@ export const countriesApi = createApi({
           );
         }
 
-        return allCountries.data ? { data: data } : { error: allCountries.error };
+        return allCountries.data
+          ? { data: data }
+          : { error: allCountries.error };
       },
     }),
   }),
-})
+});
 
 export const countriesApiCodes = createApi({
-    reducerPath: 'countriesCodesApi',
-    keepUnusedDataFor: 999_999,
-    baseQuery: fetchBaseQuery({ baseUrl: 'https://restcountries.com/v2/all' }),
-    endpoints: (builder) => ({
-      getAllCodes: builder.query({
-        query: () => `?fields=name,alpha3Code`,
-        transformResponse: (countriesCodes) => Object.entries(countriesCodes).flat(2),
-      }),
+  reducerPath: "countriesCodesApi",
+  keepUnusedDataFor: 999_999,
+  baseQuery: fetchBaseQuery({ baseUrl: "https://restcountries.com/v2/all" }),
+  endpoints: (builder) => ({
+    getAllCodes: builder.query({
+      query: () => `?fields=name,alpha3Code`,
+      transformResponse: (countriesCodes) =>
+        Object.entries(countriesCodes).flat(2),
     }),
-  });
-  
-  export const { useGetAllCountriesQuery } = countriesApi;
-  export const { useGetAllCodesQuery } = countriesApiCodes;
-  
+  }),
+});
+
+export const { useGetAllCountriesQuery } = countriesApi;
+export const { useGetAllCodesQuery } = countriesApiCodes;

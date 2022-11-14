@@ -24,7 +24,7 @@ const CountryDetailsScreen = ({ route }) => {
     tld,
     languages,
     timezones,
-    car
+    car,
   } = route?.params || {};
 
   const navigate = useNavigation();
@@ -40,51 +40,69 @@ const CountryDetailsScreen = ({ route }) => {
   return (
     <SafeAreaView>
       <View className="px-5 flex-row  items-center w-[100%] mt-2">
-        <TouchableHighlight onPress={() => navigate.goBack()} className="bg-transparent">
+        <TouchableHighlight
+          onPress={() => navigate.goBack()}
+          className="bg-transparent"
+        >
           <ArrowLeftIcon color="black" size={20} />
         </TouchableHighlight>
-        <Text className="justify-center items-center mx-auto font-bold text-[20px]">{name}</Text>
+        <Text className="justify-center items-center mx-auto font-bold text-[20px]">
+          {name}
+        </Text>
       </View>
+      <Image
+        source={{ uri: `${flag}` }}
+        resizeMethod="auto"
+        resizeMode="cover"
+        className="mt-5 h-48 rounded-lg w-[100%]"
+      />
       <ScrollView className="px-5">
-        <Image
-          source={{ uri: `${flag}` }}
-          resizeMethod="auto"
-          resizeMode="cover"
-          className="mt-5 h-48 rounded-lg w-[100%]"
-        />
+        <View className="mt-3 pb-5">
+          <View className="mt-3">
+            <View className="flex-row items-center">
+              <Text className="font-semibold text-[16px]">Population: </Text>
+              <Text className="text-[16px] font-light">
+                {population?.toLocaleString("en-US")}
+              </Text>
+            </View>
+            <View className="flex-row items-center">
+              <Text className="font-semibold text-[16px]">Region: </Text>
+              <Text className="text-[16px] font-light">{region}</Text>
+            </View>
+            <View className="flex-row items-center">
+              <Text className="font-semibold text-[16px]">Sub Region: </Text>
+              <Text className="text-[16px] font-light">{subregion}</Text>
+            </View>
+            <View className="flex-row items-center">
+              <Text className="font-semibold text-[16px]">Capital: </Text>
+              <Text className="text-[16px] font-light">{capital}</Text>
+            </View>
+          </View>
 
-        <View className="mt-3">
-          <View className="flex-row items-center">
-            <Text className="font-semibold text-[16px]">Population: </Text>
-            <Text className="text-[16px] font-light">{population?.toLocaleString('en-US')}</Text>
+          <View>
+            <View className="flex-row items-center">
+              <Text className="font-semibold text-[16px]">Timezone: </Text>
+              <Text className="text-[16px] font-light">{timezones}</Text>
+            </View>
+            <View className="flex-row items-center">
+              <Text className="font-semibold text-[16px]">Driving Side: </Text>
+              <Text className="text-[16px] font-light">{car}</Text>
+            </View>
+            <View className="flex-row items-center">
+              <Text className="font-semibold text-[16px]">
+                Official Language:{" "}
+              </Text>
+              <Text className="text-[16px] font-light">
+                {languages?.toString()}
+              </Text>
+            </View>
           </View>
-          <View className="flex-row items-center">
-            <Text className="font-semibold text-[16px]">Region: </Text>
-            <Text className="text-[16px] font-light">{region}</Text>
-          </View>
-          <View className="flex-row items-center">
-            <Text className="font-semibold text-[16px]">Capital: </Text>
-            <Text className="text-[16px] font-light">{capital}</Text>
-          </View>
+
           <View className="flex-row items-center">
             <Text className="font-semibold text-[16px]">Timezone: </Text>
             <Text className="text-[16px] font-light">{timezones}</Text>
           </View>
-          <View className="flex-row items-center">
-            <Text className="font-semibold text-[16px]">Driving Side: </Text>
-            <Text className="text-[16px] font-light">{car}</Text>
-          </View>
-          <View className="flex-row items-center">
-            <Text className="font-semibold text-[16px]">Timezone: </Text>
-            <Text className="text-[16px] font-light">{languages?.toString()}</Text>
-          </View>
-          <View className="flex-row items-center">
-            <Text className="font-semibold text-[16px]">Timezone: </Text>
-            <Text className="text-[16px] font-light">{timezones}</Text>
-          </View>
-          <Text>{car}</Text>
 
-          <Text>{region}</Text>
           {/* <Text>Code: {countriesCodes.alpha3Code}</Text> */}
         </View>
       </ScrollView>

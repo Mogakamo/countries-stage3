@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { View, TextInput } from "react-native";
-import { MagnifyingGlassIcon } from "react-native-heroicons/outline";
+
 
 const SearchInput = ({ onSearch }) => {
   const [input, setInput] = useState();

@@ -8,7 +8,7 @@ const Country = React.memo(({ navigation, country }, ...props) => {
       source={{uri: `${country.flag}`}}
         className="h-12 w-12 border-2 border-black rounded-lg"
       />
-      <View className="flex-col ml-3">
+      <View className="flex-col ml-3 py-3">
         <Text>{country.name}</Text>
         <Text>{country.capital}</Text>
       </View>
