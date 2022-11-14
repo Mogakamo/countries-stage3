@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import CountriesScreen from "../screens/CountriesScreen";
 import CountryDetailsScreen from "../screens/CountryDetailsScreen";
 import Header from "../components/Header";
+import FilterScreen from "../screens/FilterScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +17,7 @@ const MainStackNavigator = () => {
         headerTitle: (props) => <Header />
       }} />
       <Stack.Screen name="CountryDetails" component={CountryDetailsScreen} />
+      <Stack.Screen name="Filters" component={FilterScreen} />
     </Stack.Navigator>
   );
 };

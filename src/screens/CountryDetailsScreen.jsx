@@ -85,7 +85,7 @@ const CountryDetailsScreen = ({ route }) => {
           <Text>{car}</Text>
 
           <Text>{region}</Text>
-          <Text>Code: {countriesCodes.alpha3Code}</Text>
+          {/* <Text>Code: {countriesCodes.alpha3Code}</Text> */}
         </View>
       </ScrollView>
     </SafeAreaView>
