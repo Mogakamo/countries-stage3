@@ -15,6 +15,8 @@ const transformedResponse = (response) => {
       tld,
       languages,
       flags,
+      timezones,
+      car
     }) => {
       countries.push({
         id: ccn3,
@@ -28,6 +30,8 @@ const transformedResponse = (response) => {
         tld,
         languages: languages && Object.values(languages),
         flag: flags?.png,
+        timezones,
+        car: car?.side
       });
     }
   );
